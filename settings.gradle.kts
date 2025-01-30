@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Prioriti"
+rootProject.name = "prioriti"
 include(":app")
+ 

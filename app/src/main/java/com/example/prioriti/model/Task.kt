@@ -6,5 +6,5 @@ import kotlinx.datetime.LocalDateTime
 data class Task (
     val name: String,
     val date: Instant = Clock.System.now(),
-    val isChecked: Boolean
+    val isChecked: Boolean = false
 )

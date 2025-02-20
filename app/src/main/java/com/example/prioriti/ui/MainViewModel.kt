@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class MainViewModel: ViewModel() {
+class MainViewModel(tasks: List<Task> = listOf()): ViewModel() {
     private val _uiState = MutableStateFlow(MainUiState())
-    private val tasks: MutableStateFlow<List<Task>>  = MutableStateFlow(listOf())
+    val tasks: MutableStateFlow<List<Task>> = MutableStateFlow(tasks)
 
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow() // returns a readonly object
 

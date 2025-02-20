@@ -7,9 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,6 +23,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.prioriti.model.Task
+import com.example.prioriti.ui.MainUiState
+import com.example.prioriti.ui.MainViewModel
 import com.example.prioriti.ui.theme.PrioritiTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,16 +34,27 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PrioritiTheme {
-                Column(modifier = Modifier.padding(24.dp)) {
-                    CreateTask("Clean up trash", "2/12/24")
-                }
+                TaskApp(mainViewModel = MainViewModel(listOf(Task("Do Laundry"), Task("Eat garbage"))))
             }
         }
     }
 }
 
 @Composable
-fun CreateTask(name: String, date: String) {
+fun TaskApp(mainViewModel: MainViewModel = MainViewModel(), modifier: Modifier = Modifier) {
+    val mainUiState by mainViewModel.uiState.collectAsState()
+
+    LazyColumn(modifier = modifier) {
+        items(mainViewModel.tasks.value) { task ->
+            CreateTask(task)
+        }
+    }
+}
+
+@Composable
+fun CreateTask(task: Task) {
+    val name = task.name
+    val date = task.date.toString()
     /* Create a task with the given name and date
 
     Parameters:
@@ -69,6 +86,6 @@ fun CreateTask(name: String, date: String) {
 @Composable
 fun CreateTaskPreview() {
     PrioritiTheme {
-        CreateTask("Task", "Date")
+//        CreateTask("Task", "Date")
     }
 }

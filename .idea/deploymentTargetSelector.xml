@@ -2,12 +2,12 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="Unnamed">
+      <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-02-11T19:21:08.699548200Z">
+        <DropdownSelection timestamp="2025-02-20T01:20:24.429820400Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=R5CRB1E473V" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\thisi\.android\avd\Medium_Phone.avd" />
             </handle>
           </Target>
         </DropdownSelection>

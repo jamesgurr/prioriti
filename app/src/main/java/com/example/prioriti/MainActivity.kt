@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -48,6 +49,12 @@ fun TaskApp(mainViewModel: MainViewModel = MainViewModel(), modifier: Modifier =
         items(mainViewModel.tasks.value) { task ->
             CreateTask(task)
         }
+
+        item {
+            Button(onClick = { mainViewModel.createTask("Seventeen")} ) {
+
+        }
+        }
     }
 }
 
@@ -86,6 +93,6 @@ fun CreateTask(task: Task) {
 @Composable
 fun CreateTaskPreview() {
     PrioritiTheme {
-//        CreateTask("Task", "Date")
+        TaskApp(mainViewModel = MainViewModel(listOf(Task("Do Laundry"), Task("Eat garbage"))))
     }
 }
